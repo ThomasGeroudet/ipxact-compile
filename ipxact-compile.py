@@ -24,7 +24,13 @@ print("""
 
 import argparse
 import os
+import sys
 import xml.etree.ElementTree as ET
+
+
+if not (sys.version_info.major >= 3 and sys.version_info.minor >= 8):
+	print("error: python minimum version 3.8 required for xml.etree.ElementTree findall() support for {*} but found python version " + ".".join(map(str, sys.version_info[:2])))
+	sys.exit(1)
 
 
 parser = argparse.ArgumentParser()
